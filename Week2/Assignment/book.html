@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <title>Ultra Corporation</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+    <script src="javascript.js"></script>
+    <script>
+      const form = document.getElementById("fillForm");
+      const name = form.elements["fullName"];
+      const emailId = form.elements["emailid"];
+      const mobile = form.elements["mobile"];
+      const timeslot = form.elements["timeSlot"];
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        let fullname = name.value;
+        let email = emailId.value;
+        let contactNumber = mobile.value;
+        let slot = timeslot.value;
+
+        let bookingConfirmation = (document.getElementById(
+          "confirmationDiv"
+        ).hidden = false);
+        document.getElementById("confirmationDiv").innerText = `Hello  !!
+    Thankyou for booking a time slot at our store.
+
+    We will be happy to have you at our store today at ${slot}
+
+    we have sent a confirmation about you slot booking to ${email} and also a text to ${contactNumber}
+    `;
+      });
+    </script>
+  </head>
+  <body>
+    <div class="containerMain">
+      <header>
+        <div class="navDiv">
+          <img
+            id="Logo"
+            src="https://clipartcraft.com/images/cupcake-logo-outline-4.png"
+            alt="this is the logo of the company which is a black bordered cupcake"
+          />
+          <nav class="navBar">
+            <a href="home.html">Home</a>
+            <a href="book.html">Book</a>
+            <a href="contact.html">About</a>
+          </nav>
+        </div>
+      </header>
+      <div class="BookTitle">
+        <h2>Book an Appointment</h2>
+      </div>
+      <div class="contentdiv">
+        <div class="FormDiv">
+          <form id="fillForm" method="POST">
+            <label for="fullName">Name:</label>
+            <br />
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              required
+              autofocus
+            />
+            <br />
+            <label for="emailid">Email-ID:</label>
+            <br />
+            <input type="text" id="emailid" name="emailid" required />
+            <br />
+            <label for="mobile">Mobile:</label>
+            <br />
+            <input type="number" id="mobile" name="mobile" required />
+            <br />
+            <label for="timeSlot">Choose time slot</label>
+            <br />
+            <input
+              type="time"
+              id="timeSlot"
+              name="timeSlot"
+              min="10:00"
+              max="18:00"
+              required
+            />
+            <br />
+            <button type="submit">Book Appointment</button>
+          </form>
+        </div>
+        <div id="confirmationDiv">
+          <img
+            src="Screen Shot 2021-09-28 at 7.10.03 PM.png"
+            alt="sniipet of map showing location of 163 william street"
+          />
+        </div>
+      </div>
+
+      <div class="footerDiv">
+        <footer>
+          This website was created using references from MDN and W3Schools
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

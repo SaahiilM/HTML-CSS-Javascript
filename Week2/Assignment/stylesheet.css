@@ -1,0 +1,136 @@
+body {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 31%,
+    rgba(148, 81, 217, 1) 97%
+  );
+  background-repeat: no-repeat;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  width: 100%;
+  height: 100%;
+}
+footer {
+  position: fixed;
+  padding: 10px 10px 0px 10px;
+  bottom: 0;
+  width: 100%;
+}
+div.IntroTitle {
+  display: grid;
+  grid-template-columns: repeat(3, 3fr);
+  grid-auto-columns: auto;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: justify;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 20pt;
+}
+
+div.navDiv img {
+  width: 125px;
+  content: icon;
+  /* margin: 0.5rem;
+  padding: 0.5rem; */
+}
+
+.navDiv {
+  overflow: hidden;
+}
+
+.navBar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  font-size: 2rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+.navBar a {
+  text-align: left;
+  padding: 6%;
+  border-style: solid;
+  border: aqua;
+  border-width: thick;
+  margin: 2%;
+  color: aliceblue;
+}
+
+a:link {
+  text-decoration: none;
+}
+a:hover {
+  color: rebeccapurple;
+}
+a:visited {
+  text-decoration: none;
+}
+
+div.navDiv {
+  background: rgb(115, 183, 219);
+  background: linear-gradient(
+    90deg,
+    rgba(115, 183, 219, 1) 20%,
+    rgba(217, 81, 153, 1) 66%
+  );
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  width: 100%;
+}
+
+div.contentdiv {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: justify;
+  font-size: 2rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+div.contentdiv input {
+  padding: 1%;
+  margin: 1%;
+}
+
+div.contentdiv button {
+  background-color: #6aa84f;
+  border-radius: 30px;
+  width: 150px;
+  padding: 1%;
+  margin: 1%;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+#confirmationDiv img {
+  width: 56%;
+}
+
+div.iconlink img {
+  width: 25px;
+}
+
+div.iconlink {
+  font-size: 2rem;
+}
+
+@media (max-width: 700px) {
+  body {
+    height: 100%;
+  }
+  div.IntroTitle {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-auto-columns: auto;
+  }
+
+  div.contentdiv {
+    display: grid;
+    grid-template-columns: 100%;
+  }
+
+  #confirmationDiv img {
+    width: 100%;
+    object-fit: fill;
+  }
+}
