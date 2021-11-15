@@ -1,0 +1,156 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smile Please</title>
+    <style>
+      div.camera {
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="camera">
+      <div class="one">
+        <video id="video" style="display: none"></video>
+        <button id="startbtn">Take Photo</button>
+      </div>
+      <div class="two">
+        <canvas id="canvas"> </canvas>
+      </div>
+      <div class="btnrow">
+        <button id="grayscale" disabled>GRAYSCALE</button>
+        <button id="invert" disabled>INVERT</button>
+        <button id="blur" disabled>BLUR</button>
+        <button id="comp" disabled>COMPLEX</button>
+        <button id="time" disabled>TIME</button>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var width = 320;
+        var height = 0;
+        var streaming = false;
+        var video = null;
+        var canvas = null;
+        var startbtn = null;
+        var gscale = null;
+        var invert = null;
+        var blur = null;
+        var sepia = null;
+
+        var gscale = document.getElementById("grayscale");
+        var invert = document.getElementById("invert");
+        var blur = document.getElementById("blur");
+        var sepia = document.getElementById("sepia");
+
+        function startup() {
+          video = document.getElementById("video");
+          canvas = document.getElementById("canvas");
+          startbtn = document.getElementById("startbtn");
+          gscale = document.getElementById("grayscale");
+          invert = document.getElementById("invert");
+          blur = document.getElementById("blur");
+          comp = document.getElementById("comp");
+          time = document.getElementById("time");
+
+          navigator.mediaDevices
+            .getUserMedia({ video: true, audio: false })
+            .then(function (stream) {
+              video.srcObject = stream;
+              video.play();
+            })
+            .catch(function (err) {
+              console.log("an error", err);
+            });
+
+          video.addEventListener(
+            "canplay",
+            function (ev) {
+              if (!streaming) {
+                height = video.videoHeight / (video.videoWidth / width);
+
+                if (isNaN(height)) {
+                  height = width / (16 / 9);
+                }
+                canvas.setAttribute("width", width);
+                canvas.setAttribute("height", height);
+
+                streaming = true;
+              }
+            },
+            false
+          );
+          startbtn.addEventListener(
+            "click",
+            function (ev) {
+              takepicture();
+              gscale.disabled = false;
+              invert.disabled = false;
+              blur.disabled = false;
+              comp.disabled = false;
+              time.disabled = false;
+              video.srcObject.getVideoTracks().forEach((track) => track.stop());
+              ev.preventDefault();
+            },
+            false
+          );
+
+          clearphoto();
+        }
+
+        function clearphoto() {
+          var context = canvas.getContext("2d");
+          context.fillStyle = "#AAA";
+          context.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function takepicture() {
+          var context = canvas.getContext("2d");
+          if (width && height) {
+            canvas.width = width;
+            canvas.height = height;
+            context.drawImage(video, 0, 0, width, height);
+          } else {
+            clearphoto();
+          }
+        }
+
+        gscale.addEventListener("click", function (ev) {
+          canvas.setAttribute("style", "filter: grayscale(1)");
+        });
+
+        invert.addEventListener("click", function (ev) {
+          canvas.setAttribute("style", "filter: invert(1)");
+        });
+
+        blur.addEventListener("click", function (ev) {
+          canvas.setAttribute("style", "filter: blur(5px)");
+        });
+
+        comp.addEventListener("click", function (ev) {
+          canvas.setAttribute(
+            "style",
+            "filter:brightness(1.3) invert(0.17) saturate(2.6) sepia(0.25) "
+          );
+        });
+
+        time.addEventListener("click", function (ev) {
+          var context = canvas.getContext("2d");
+          var currentDate = new Date();
+          context.strokeStyle = "white";
+          context.font = "10px helvetica";
+          context.fillText(currentDate.toLocaleTimeString("en-US"), 10, 10);
+        });
+
+        window.addEventListener("load", startup, false);
+      })();
+    </script>
+  </body>
+</html>
