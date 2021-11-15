@@ -1,0 +1,113 @@
+<html>
+  <head>
+    <title>Cruz Diez</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+  </head>
+  <body style="margin: 0">
+    <div id="canvasdiv">
+      <canvas id="outercanvas" style="border: 2px solid black"> </canvas>
+    </div>
+
+    <script>
+      let canvas = document.getElementById("outercanvas");
+
+      let ctx = canvas.getContext("2d");
+
+      let region = new Path2D();
+      // region.rect();
+
+      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      function drawDiagonalBox(
+        boxOriginX = canvas.width / 10,
+        boxOriginY = canvas.height / 2,
+        boxWidth = 500,
+        lineGap = 10,
+        color = "#77A130"
+      ) {
+        ctx.strokeStyle = color;
+        for (var n = 0; n <= boxWidth; n += lineGap) {
+          if (n < boxWidth / 2) yAdjuster = -n;
+          else yAdjuster = boxWidth - n;
+          // console.log(n, yAdjuster);
+          ctx.moveTo(boxOriginX + n, boxOriginY - yAdjuster);
+          ctx.lineTo(boxOriginX + n, boxOriginY + yAdjuster);
+          ctx.stroke();
+        }
+      }
+
+      drawDiagonalBox();
+
+      //green
+      // drawShape("#77A130");
+      // ctx.restore();
+      // ctx.resetTransform();
+
+      // ctx.translate(-328, 0);
+      // drawShape("#77A130");
+      // ctx.restore();
+      // ctx.resetTransform();
+
+      // ctx.translate(339, 0);
+      // drawShape("#77A130");
+      // ctx.restore();
+      // ctx.resetTransform();
+
+      // //blue
+      // ctx.translate(125, 0);
+      // drawShape("#2482CB");
+      // 0;
+      // ctx.restore();
+      // ctx.resetTransform();
+
+      // ctx.translate(-443, 0);
+      // drawShape("#2482CB");
+      // ctx.restore();
+      // ctx.resetTransform();
+
+      // //orange
+      // ctx.translate(221, 0);
+      // drawShape("#D95A23");
+      // ctx.restore();
+      // ctx.resetTransform();
+
+      // ctx.translate(-213, 0);
+      // drawShape("#D95A23");
+      // ctx.restore();
+      // ctx.resetTransform();
+
+      // function drawShape(color) {
+      //   ctx.lineWidth = 2;
+      //   ctx.strokeStyle = color;
+      //   ctx.save();
+      // ctx.translate(500, 500);
+      // ctx.rotate(Math.PI / 4);
+      // ctx.translate(-500, -500);
+
+      // ctx.save();
+      // ctx.rect(300, 300, 400, 400);
+      // ctx.clip();
+
+      // ctx.translate(500, 500);
+      // ctx.rotate(-(Math.PI / 4));
+      // ctx.translate(-500, -500);
+
+      //   ctx.beginPath();
+      //   for (var x = 200; x < 800; x += 10) {
+      //     addLine(ctx, x);
+      //   }
+      //   ctx.stroke();
+      // }
+
+      // function addLine(ctx, x) {
+      //   ctx.moveTo(x, 200);
+      //   ctx.lineTo(x, 800);
+      // }
+    </script>
+  </body>
+</html>
+<!-- 
+for (...) { drawDiagonalBox(x, y); }
+http://webpage.pace.edu/sm60895n/Week4/Assignment/drawing.html -->
