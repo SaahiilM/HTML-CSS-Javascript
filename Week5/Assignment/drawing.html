@@ -1,0 +1,200 @@
+<html>
+  <head>
+    <!-- <meta name="viewport" content="user-scalable=no" /> -->
+    <title>Cruz Diez</title>
+    <link rel="stylesheet" href="stylesheet.css" />
+  </head>
+  <body style="margin: 0">
+    <button id="permission">Get Permission</button>
+    <div id="canvasdiv">
+      <canvas id="outercanvas" style="border: 2px solid black"> </canvas>
+    </div>
+
+    <script>
+      let canvas = document.getElementById("outercanvas");
+
+      let ctx = canvas.getContext("2d");
+
+      let region = new Path2D();
+      // region.rect();
+
+      canvas.height = window.innerHeight;
+      console.log(canvas.height);
+      canvas.width = window.innerWidth;
+      console.log(canvas.width);
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      var boxOriginX = canvas.width / 5;
+      var boxOriginY = canvas.height / 2;
+      var boxWidth = 500;
+      var lineGap = 8;
+      var ax, by;
+      // var color
+      function drawDiagonalBox(color) {
+        // boxX = x;
+
+        // boxY = y;
+        // console.log(x, y);
+        // console.log("origing is : ", boxOriginX, boxOriginY);
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = color;
+        for (var n = 0; n <= boxWidth; n += lineGap) {
+          if (n < boxWidth / 2) yAdjuster = -n;
+          else yAdjuster = boxWidth - n;
+          // ctx.save();
+          // console.log(n, yAdjuster);
+          ctx.moveTo(boxOriginX + n, boxOriginY - yAdjuster);
+          ctx.lineTo(boxOriginX + n, boxOriginY + yAdjuster);
+          ctx.stroke();
+          // ctx.restore();
+        }
+        // ctx.translate(boxOriginX - x, boxOriginY);
+      }
+
+      // function animate() {
+      //   requestAnimationFrame(animate);
+
+      // }
+
+      // for (...) { drawDiagonalBox(x, y); }
+      // drawDiagonalBox("#77A130");
+      if (location.protocol != "https:") {
+        location.href =
+          "https:" +
+          window.location.href.substring(window.location.protocol.length);
+      }
+
+      function animate(x, y) {
+        requestAnimationFrame(animate);
+        ctx.translate(boxOriginX - x, 0);
+      }
+
+      function requestPermission() {
+        if (
+          typeof DeviceMotionEvent !== "undefined" &&
+          typeof DeviceMotionEvent.requestPermission === "function"
+        ) {
+          DeviceMotionEvent.requestPermission()
+            .then((response) => {
+              if (response == "granted") {
+                window.addEventListener(
+                  "devicemotion",
+                  (e) => {
+                    var ax = Math.floor(
+                      event.accelerationIncludingGravity.x * 10
+                    );
+
+                    var by = Math.floor(
+                      event.accelerationIncludingGravity.y * 10
+                    );
+
+                    // animate(ax, by);
+                    // var z = event.accelerationIncludingGravity.z;
+                    // console.log("do this");
+                    // console.log("motionevent: ", x, y, z);
+                    // drawDiagonalBox("#77A130", ax, by);
+                  },
+                  drawDiagonalBox("#77A130"),
+                  animate(ax, by),
+                  console.log("hello")
+
+                  // animate()
+
+                  // setInterval(function () {
+                  //   boxOriginX = boxOriginX + x;
+                  //   boxOriginY = boxOriginY + y;
+
+                  //   boxOriginX = boxOriginX * 0.98;
+                  //   boxOriginY = boxOriginY * 0.98;
+
+                  //   newx = parseInt(newx + boxOriginX / 50);
+                  //   newy = parseInt(newy + boxOriginY / 50);
+                  //   drawDiagonalBox("#77A130");
+                  // }, 25)
+                );
+              }
+            })
+            .catch(console.error);
+        } else {
+          alert("Device motion is not defined");
+        }
+      }
+
+      const btn = document.getElementById("permission");
+      btn.addEventListener("click", requestPermission);
+
+      // window.addEventListener("devicemotion", handleEvent, true);
+      // function handleEvent(event) {
+
+      // }
+
+      //green
+      // drawShape("#77A130");
+      // ctx.restore();
+      // ctx.resetTransform();
+
+      // ctx.translate(-328, 0);
+      // drawShape("#77A130");
+      // ctx.restore();
+      // ctx.resetTransform();
+
+      // ctx.translate(339, 0);
+      // drawShape("#77A130");
+      // ctx.restore();
+      // ctx.resetTransform();
+
+      // //blue
+      // ctx.translate(125, 0);
+      // drawShape("#2482CB");
+      // 0;
+      // ctx.restore();
+      // ctx.resetTransform();
+
+      // ctx.translate(-443, 0);
+      // drawShape("#2482CB");
+      // ctx.restore();
+      // ctx.resetTransform();
+
+      // //orange
+      // ctx.translate(221, 0);
+      // drawShape("#D95A23");
+      // ctx.restore();
+      // ctx.resetTransform();
+
+      // ctx.translate(-213, 0);
+      // drawShape("#D95A23");
+      // ctx.restore();
+      // ctx.resetTransform();
+
+      // function drawShape(color) {
+      //   ctx.lineWidth = 2;
+      //   ctx.strokeStyle = color;
+      //   ctx.save();
+      // ctx.translate(500, 500);
+      // ctx.rotate(Math.PI / 4);
+      // ctx.translate(-500, -500);
+
+      // ctx.save();
+      // ctx.rect(300, 300, 400, 400);
+      // ctx.clip();
+
+      // ctx.translate(500, 500);
+      // ctx.rotate(-(Math.PI / 4));
+      // ctx.translate(-500, -500);
+
+      //   ctx.beginPath();
+      //   for (var x = 200; x < 800; x += 10) {
+      //     addLine(ctx, x);
+      //   }
+      //   ctx.stroke();
+      // }
+
+      // function addLine(ctx, x) {
+      //   ctx.moveTo(x, 200);
+      //   ctx.lineTo(x, 800);
+      // }
+    </script>
+  </body>
+</html>
+<!-- 
+http://webpage.pace.edu/sm60895n/Week4/Assignment/drawing.html -->
