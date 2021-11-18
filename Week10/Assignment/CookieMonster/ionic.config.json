@@ -1,0 +1,7 @@
+{
+  "name": "CookieMonster",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
