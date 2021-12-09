@@ -1,0 +1,27 @@
+.collapsible .toggle {
+  background: #0d72e6;
+  border: unset;
+  cursor: pointer;
+  font: unset;
+  padding: 0.3rem;
+  border-radius: 5px;
+  color: aliceblue;
+  margin-bottom: 0.5rem;
+}
+
+.collapsible .content {
+  border: 1px solid #d9e4f0;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.collapsible .content-parent {
+  height: 0px;
+  overflow: hidden;
+  transition: height ease 0.3s;
+}
+/* 
+.collapsible .content-parent.show {
+  height: auto;
+} */

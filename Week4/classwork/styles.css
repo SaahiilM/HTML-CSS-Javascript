@@ -1,0 +1,121 @@
+button {
+  padding: 5px;
+  background-color: darkseagreen;
+  transition: padding 2s, transform 1s;
+}
+button:hover {
+  padding: 7px;
+  transform: scale(1.1);
+}
+
+img {
+  max-width: 60px;
+  float: left;
+  transition: width 3s, height 3s, transform 2.5s;
+}
+
+img:hover {
+  width: 65px;
+  height: 65px;
+  transform: rotate(360deg);
+}
+@media only screen and (min-width: 601px) {
+  body {
+    background: repeating-linear-gradient(to top right, #fadfe2, white)
+      no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    min-width: 95%;
+  }
+
+  div.innerMain {
+    color: black;
+    display: grid;
+    grid-template-columns: 47.5% 47.5%;
+    gap: 5%;
+  }
+
+  div.videoBlock {
+    text-align: center;
+  }
+
+  div.codeDiv {
+    font-family: "Courier New", Courier, monospace;
+    margin: 5px;
+    background-color: white;
+    text-align: center;
+    border: 5px;
+    border-style: solid;
+    border-color: gray;
+    box-shadow: 5px 9px 19px 0px #000000;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  section {
+    text-align: center;
+  }
+
+  div.videoBlock {
+    margin: 10px;
+  }
+
+  div.FormDiv {
+    padding: 2em;
+    text-align: justify;
+  }
+
+  #codeBlock {
+    font-size: 14pt;
+  }
+  video {
+    padding: 0.5em;
+    max-width: 1080px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  img {
+    display: none;
+  }
+  body {
+    text-align: center;
+    background-image: linear-gradient(
+      to bottom,
+      rgb(101, 115, 255),
+      rgb(115, 127, 254),
+      rgb(128, 139, 254),
+      rgb(142, 151, 253),
+      rgb(155, 163, 253),
+      rgb(169, 175, 252),
+      rgb(182, 187, 252),
+      rgb(196, 199, 251),
+      rgb(209, 211, 251),
+      rgb(223, 223, 250),
+      rgb(236, 235, 250),
+      rgb(250, 247, 249)
+    );
+  }
+
+  div.innerDiv {
+    display: grid;
+    width: fit-content;
+  }
+  div.codeDiv {
+    font-family: "Courier New", Courier, monospace;
+    margin: 5px;
+    min-height: 250px;
+    background-color: white;
+    text-align: center;
+    border: 5px;
+    border-style: solid;
+    border-color: gray;
+    box-shadow: 5px 9px 19px 0px #000000;
+  }
+
+  video {
+    max-width: 340px;
+    max-height: max-content;
+  }
+}

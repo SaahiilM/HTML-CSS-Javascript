@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <title>Welcome Home</title>
+    <link rel="stylesheet" href="styles.css" >
+  </head>
+
+  <body>
+    <div class="MainDiv">
+      <h2 id="PageTitle">Basic HTML Generator</h2>
+      <div class="IntroDiv">
+        <section>
+          <h3>Introduction:</h3>
+          <p>
+            This webpage takes input from the form fields and displays the html
+            code for diplaying info in webpage
+          </p>
+        </section>
+        <hr />
+      </div>
+      <br />
+      <div class="innerMain">
+        <div class="FormDiv">
+          <form id="fillForm" method="POST">
+            <label for="fullName">Name:</label>
+            <br />
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              required
+              autofocus
+            />
+            <hr />
+            <label for="majorName">Major:</label>
+            <br />
+            <input type="text" id="majorName" name="majorName" required />
+            <hr />
+            <label for="age">Age:</label>
+            <br />
+            <input type="number" id="age" name="age" required />
+            <hr />
+            <label for="gradYear">Graduation Year:</label>
+            <br />
+            <input type="date" id="gradYear" name="gradYear" required />
+            <hr />
+            <button type="submit">Generate Htlm</button>
+          </form>
+        </div>
+        <div class="codeDiv">
+          <code id="codeBlock">
+            Test code
+            <br />
+            <hr>
+            <div id="interDiv" hidden style="text-align: left;">Hello hidden div
+            </div>
+          </code>
+        </div>
+      </div>
+      <br />
+      <div class="videoBlock">
+        <details>
+          <summary>Video Player</summary>
+          <video
+            controls
+            width="1080"
+            controlslist="nodownload"
+            src="pexels-diva-plavalaguna-5664462.mp4"
+          >
+        </details>
+      </div>
+    </div>
+    <script>
+      const form = document.getElementById("fillForm");
+      const name = form.elements['fullName'];
+      const major = form.elements['majorName'];
+      const age = form.elements['age'];
+      const gradDate = form.elements['gradYear'];
+      form.addEventListener('submit',(event)=>{
+        event.preventDefault();
+        let fullname = name.value;
+        let yearsAge = age.value;
+        let majorName = major.value;
+        let gradYear = gradDate.value;
+
+        let htmlStructure = 
+
+        document.getElementById("interDiv").hidden = false;
+        document.getElementById("interDiv").innerText =`
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>My Info</title>
+          </head>
+          <body>
+            <h3>Full name: ${fullname}</h3>
+            <br />
+            <h3>Age: ${yearsAge}</h3>
+            <br />
+            <h3>Major Name: ${majorName}</h3>
+            <br />
+            <h3>Graduation Date: ${gradYear}</h3>
+          </body>
+        </html>` ;
+        
+
+      })
+      
+    </script>
+    <style>
+      body {
+  background: repeating-linear-gradient(to top right, #fadfe2, white) no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  min-width: 95%;
+}
+
+div.innerMain {
+  color: black;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+div.videoBlock {
+  text-align: center;
+}
+
+div.codeDiv {
+  font-family: "Courier New", Courier, monospace;
+  margin: 5px;
+  background-color: white;
+  text-align: center;
+  border: 5px;
+  border-style: solid;
+  border-color: gray;
+  box-shadow: 5px 9px 19px 0px #000000;
+}
+
+h2 {
+  text-align: center;
+}
+
+section {
+  text-align: center;
+}
+
+div.videoBlock {
+  margin: 10px;
+}
+
+div.formDiv {
+  background-color: burlywood;
+  margin: 5px;
+  text-align: justify;
+}
+
+#codeBlock {
+  font-size: 14pt;
+}
+    </style>
+  </body>
+</html>

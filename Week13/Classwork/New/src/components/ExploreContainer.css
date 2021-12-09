@@ -1,0 +1,13 @@
+ion-button {
+  width: 150px;
+}
+
+.studentImage {
+  max-height: 300px;
+  height: 300px;
+}
+
+.navButtons {
+  display: flex;
+  justify-content: space-between;
+}

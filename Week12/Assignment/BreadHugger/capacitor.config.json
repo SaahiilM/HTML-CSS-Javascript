@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "BreadHugger",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}

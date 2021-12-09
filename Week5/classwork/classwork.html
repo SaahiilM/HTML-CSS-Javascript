@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0,maximum-scale=1.0, user-scalable=no" />
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body onmousemove="drawBox(event)" ">
+    <canvas id="c"></canvas>
+    <script>
+      var canvas = document.getElementById("c");
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      
+      var c = canvas.getContext("2d");
+      c.fillStyle = "red";
+      canvas.ontouchmove = function (e){
+        e.preventDefault();
+            for(var po =0 ; po< e.touches.length; po++){
+              // var x = 
+              // var y =
+
+              c.fillRect(e.touches[po].pageX, e.touches[po].pageY,20,20) 
+              // console.log(x,y)
+              
+            }
+            
+            // var x = e.touches[0].clientX
+            // var y = e.touches[0].clientY
+            // c.fillRect(x,y,20,20)
+            // console.log(x,y)
+        }
+    
+
+      function drawBox(e) {
+        c.fillRect(e.clientX, e.clientY, 20, 20);
+      }
+    </script>
+  </body>
+</html>
+http://webpage.pace.edu/sm60895n/Week4/classwork.html

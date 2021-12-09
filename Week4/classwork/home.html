@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <title>Welcome Home</title>
+    <!-- <link rel="stylesheet" href="styles.css" > -->
+  </head>
+
+  <body>
+    <div class="MainDiv">
+      <div class="TitleDiv">
+        <img src="http://orig11.deviantart.net/98a1/f/2012/247/f/6/random_logo_i_was_bored_designing_by_shadow3vi1-d5difqb.png">
+        <h2 id="PageTitle">Basic HTML Generator</h2>
+      </div>
+      <div class="IntroDiv">
+        <section>
+          <h3>Introduction:</h3>
+          <p>
+            This webpage takes input from the form fields and displays the html
+            code for diplaying info in webpage
+          </p>
+        </section>
+        <hr />
+      </div>
+      <br />
+      <div class="innerMain">
+        <div class="FormDiv">
+          <form id="fillForm" method="POST">
+            <label for="fullName">Name:</label>
+            <br />
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              required
+              autofocus
+            />
+            <hr />
+            <label for="majorName">Major:</label>
+            <br />
+            <input type="text" id="majorName" name="majorName" required />
+            <hr />
+            <label for="age">Age:</label>
+            <br />
+            <input type="number" id="age" name="age" required />
+            <hr />
+            <label for="gradYear">Graduation Year:</label>
+            <br />
+            <input type="date" id="gradYear" name="gradYear" required />
+            <hr />
+            <button type="submit">Generate HTML</button>
+          </form>
+        </div>
+        <div class="codeDiv">
+          <code id="codeBlock">
+            Generated Code
+            <br />
+            <hr>
+            <div id="interDiv" hidden style="text-align: left;">Hello hidden div
+            </div>
+          </code>
+        </div>
+      </div>
+      <br />
+      <div class="videoBlock">
+        <details>
+          <summary>Video Player</summary>
+          <video
+            controls
+            
+            controlslist="nodownload"
+            src="pexels-diva-plavalaguna-5664462.mp4"
+          >
+        </details>
+      </div>
+    </div>
+    <script>
+      const form = document.getElementById("fillForm");
+      const name = form.elements['fullName'];
+      const major = form.elements['majorName'];
+      const age = form.elements['age'];
+      const gradDate = form.elements['gradYear'];
+      form.addEventListener('submit',(event)=>{
+        event.preventDefault();
+        let fullname = name.value;
+        let yearsAge = age.value;
+        let majorName = major.value;
+        let gradYear = gradDate.value;
+
+        let htmlStructure = 
+
+        document.getElementById("interDiv").hidden = false;
+        document.getElementById("interDiv").innerText =`<!DOCTYPE html>
+        <html>
+          <head>
+            <title>My Info</title>
+          </head>
+          <body>
+            <h3>Full name: ${fullname}</h3>
+            <br />
+            <h3>Age: ${yearsAge}</h3>
+            <br />
+            <h3>Major Name: ${majorName}</h3>
+            <br />
+            <h3>Graduation Date: ${gradYear}</h3>
+          </body>
+        </html>` ;
+        
+
+      })
+      
+    </script>
+    <style>
+      button {
+  padding: 5px;
+  background-color: darkseagreen;
+  transition: padding 2s, transform 1s;
+}
+button:hover {
+  padding: 7px;
+  transform: scale(1.1);
+}
+
+img {
+  max-width: 60px;
+  float: left;
+  transition: width 3s, height 3s, transform 2.5s;
+}
+
+img:hover {
+  width: 65px;
+  height: 65px;
+  transform: rotate(360deg);
+}
+@media only screen and (min-width: 601px) {
+  body {
+    background: repeating-linear-gradient(to top right, #fadfe2, white)
+      no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    min-width: 95%;
+  }
+
+  div.innerMain {
+    color: black;
+    display: grid;
+    grid-template-columns: 47.5% 47.5%;
+    gap: 5%;
+  }
+
+  div.videoBlock {
+    text-align: center;
+  }
+
+  div.codeDiv {
+    font-family: "Courier New", Courier, monospace;
+    margin: 5px;
+    background-color: white;
+    text-align: center;
+    border: 5px;
+    border-style: solid;
+    border-color: gray;
+    box-shadow: 5px 9px 19px 0px #000000;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  section {
+    text-align: center;
+  }
+
+  div.videoBlock {
+    margin: 10px;
+  }
+
+  div.FormDiv {
+    padding: 2em;
+    text-align: justify;
+  }
+
+  #codeBlock {
+    font-size: 14pt;
+  }
+  video {
+    padding: 0.5em;
+    max-width: 1080px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  img {
+    display: none;
+  }
+  body {
+    text-align: center;
+    background-image: linear-gradient(
+      to bottom,
+      rgb(101, 115, 255),
+      rgb(115, 127, 254),
+      rgb(128, 139, 254),
+      rgb(142, 151, 253),
+      rgb(155, 163, 253),
+      rgb(169, 175, 252),
+      rgb(182, 187, 252),
+      rgb(196, 199, 251),
+      rgb(209, 211, 251),
+      rgb(223, 223, 250),
+      rgb(236, 235, 250),
+      rgb(250, 247, 249)
+    );
+  }
+
+  div.innerDiv {
+    display: grid;
+    width: fit-content;
+  }
+  div.codeDiv {
+    font-family: "Courier New", Courier, monospace;
+    margin: 5px;
+    min-height: 250px;
+    background-color: white;
+    text-align: center;
+    border: 5px;
+    border-style: solid;
+    border-color: gray;
+    box-shadow: 5px 9px 19px 0px #000000;
+  }
+
+  video {
+    max-width: 340px;
+    max-height: max-content;
+  }
+}
+    </style>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>Geolocation</title>
+  </head>
+  <body>
+    <script>
+      let batteryLevel = navigator.getBattery().then(gotData);
+      function gotData(data) {
+        console.log(data.level * 100);
+
+        console.log("Hello");
+
+        navigator.geolocation.getCurrentPosition(here);
+        function here(position) {
+          document.getElementById("location").innerText =
+            "Loaction is " +
+            position.coords.latitude +
+            "," +
+            position.coords.longitude;
+        }
+      }
+    </script>
+    <div id="location"></div>
+  </body>
+</html>

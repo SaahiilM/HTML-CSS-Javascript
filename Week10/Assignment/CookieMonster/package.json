@@ -2,7 +2,7 @@
   "name": "CookieMonster",
   "version": "0.0.1",
   "private": true,
-  "homepage": "https://webpage.pace.edu/sm60895n/Week9/Assignment/build",
+  "homepage": ".",
   "dependencies": {
     "@capacitor/app": "1.0.6",
     "@capacitor/core": "3.3.1",

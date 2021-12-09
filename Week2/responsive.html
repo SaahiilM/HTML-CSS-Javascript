@@ -1,0 +1,73 @@
+<html>
+  <body>
+    <style>
+      body {
+        margin: 10px;
+        background-image: url("/Users/sahil/Downloads/new_york_city_neon_cityscape.jpg");
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      @media (max-width: 700px) {
+        div.container {
+          display: grid;
+          grid-template-columns: 100%;
+          font-size: 18pt;
+        }
+        div#one {
+          background-color: black;
+          color: greenyellow;
+        }
+        div#two {
+          background-color: blue;
+          color: beige;
+        }
+        div#three {
+          background-color: cornflowerblue;
+          color: azure;
+        }
+      }
+      .container {
+        display: grid;
+        grid-template-columns: repeat(3, 3fr);
+        grid-auto-rows: minmax(40px, auto);
+        gap: 10px;
+      }
+
+      .container div {
+        background-color: blueviolet;
+        border: 1px solid black;
+      }
+      #one {
+        background-color: chartreuse;
+      }
+      #two {
+        background-color: turquoise;
+      }
+      #three {
+        background-color: crimson;
+      }
+    </style>
+    <style media="print">
+      .container {
+        grid-template-columns: 1fr;
+      }
+      #three {
+        display: none;
+      }
+    </style>
+    <div class="container">
+      <div id="one">hel</div>
+      <div id="two">ther</div>
+      <div id="three">
+        wha Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet ex
+        beatae rem doloremque dignissimos atque ab laudantium et. Nulla earum
+        cum mollitia nobis nostrum deleniti ut eveniet, dolore molestiae.
+        Consequatur.
+      </div>
+      <div>ho</div>
+      <div>som</div>
+      <div>mor</div>
+    </div>
+  </body>
+</html>
